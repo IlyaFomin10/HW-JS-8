@@ -72,3 +72,36 @@ const manager = new Manager("Jane Doe", "Sales");
 manager.displayInfo(); // "Name: John Doe, Department: Sales"
 
 // Task2
+class Product {
+  constructor(name, price, quantity) {
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+  }
+}
+let products = [];
+class Order {
+  constructor(id) {
+    this.id = id;
+  }
+  addProduct(product) {
+    products.push(product);
+  }
+  getTotalPrice() {
+    let totalPrice = 0;
+    for (const item of products) {
+      totalPrice += item.price;
+    }
+    return totalPrice;
+  }
+}
+
+const order = new Order(12345);
+
+const product1 = new Product("Phone", 500, 2);
+order.addProduct(product1);
+
+const product2 = new Product("Headphones", 100, 1);
+order.addProduct(product2);
+
+console.log(order.getTotalPrice());
