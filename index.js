@@ -79,18 +79,18 @@ class Product {
     this.quantity = quantity;
   }
 }
-let products = [];
 class Order {
+  products = [];
   constructor(id) {
     this.id = id;
   }
   addProduct(product) {
-    products.push(product);
+    this.products.push(product);
   }
   getTotalPrice() {
     let totalPrice = 0;
-    for (const item of products) {
-      totalPrice += item.price;
+    for (const item of this.products) {
+      totalPrice += item.price * item.quantity;
     }
     return totalPrice;
   }
